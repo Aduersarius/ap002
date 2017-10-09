@@ -1,39 +1,37 @@
 #include <iostream>
+#include <sstream>
 using namespace std;
-int main() {
-    int n = 0;
-    int c = 1;
-    string line;
-    getline(cin, line);
-    int sum = 0;
-    int a = line.length();
-    for (int i = 0; i < a; i++) {
-        if (isdigit(line[i])) {
-            n *=  c ;
-            n +=  line[i];
-            c *=  10;
+
+int main()
+{
+    char b;
+	double m, n;
+	string line;
+	getline(cin, line);
+	istringstream stream(line);
+	stream >> n;
+	while (stream >> b)
+	{
+		switch (b)
+		{
+		case '+':
+			stream >> m;
+			n += m;
+			break;
+		case '-':
+			stream >> m;
+			n -= m;
+			break;
+		case '*':
+			stream >> m;
+			n *= m;
+			break;
+		case '/':
+			stream >> m;
+			n /= m;
+			break;
         }
-        if (!isdigit(line[i])) {
-                switch (line[i]) {
-                    case '+':
-                        sum = sum + n;
-                        break;
-                    case '-':
-                        sum = sum - n;
-                        break;
-                    case '*':
-                        sum = sum * n;
-                        break;
-                    case '/':
-                        sum = sum / n;
-                        break;
-                    default:
-                        cout << "error";
-                }
-                n = 0;
-                c = 1;
-        }
-        }
-    cout << sum;
-        return 0;
-    }
+   }
+	cout << n << endl;
+	return 0;
+}
